@@ -38,6 +38,18 @@ curl http://localhost:5186/health
 curl http://localhost:5186/version
 ```
 
+Smoke test the running API:
+
+```bash
+./scripts/smoketest.sh
+```
+
+To target a different local base URL:
+
+```bash
+./scripts/smoketest.sh http://localhost:5000
+```
+
 ## Configuration
 
 The API reads basic metadata from `appsettings.json`:
@@ -52,10 +64,28 @@ Current default values are:
 - Version: `1.0.0`
 - Environment: `dev`
 
+## Codex Workflow
+
+This repository includes repo-local Codex operating files intended to be read before major implementation work:
+
+- `AGENTS.md`
+- `SKILL.md`
+- `QUICKSTARTCODEX.md`
+- `PLAN.md`
+- `STEPS.md`
+
+`QUICKSTARTCODEX.md` is the entry point and points Codex at the repo rules, local skill usage, and planning files.
+
+## Template Helpers
+
+- `setup-repo-path.sh` updates placeholder absolute paths in template documentation files after the repository is copied to a new location.
+- `scripts/smoketest.sh` performs a lightweight curl-based check against the `/health` and `/version` endpoints.
+
 ## Repository Notes
 
 - Repo-local agent guidance lives in `AGENTS.md` and `SKILL.md`.
 - Planning is tracked in `PLAN.md` and `STEPS.md`.
 - The sample HTTP file lives at `app/dotnetapi/releaseGuard.api/releaseGuard.api.http`.
+- Repo-local planning updates can use the `.codex/skills/updateplansteps/` skill.
 
-<!-- readme-sync-base: a90c4f8c505d23bc1f678cc5f7d961280b3673d6 -->
+<!-- readme-sync-base: 789f5288db720e44331335a6acc706fe9777cd44 -->
